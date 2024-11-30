@@ -1,0 +1,69 @@
+<%- contentFor('body') %>
+
+
+    <div class="login-container">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="bi bi-shield-lock"></i>
+            </div>
+            <div class="brand-name">CompanyName</div>
+        </div>
+    
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Welcome Back</h1>
+                <p class="text-muted">Please enter your credentials</p>
+            </div>
+    
+            <form id="loginForm" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <i class="bi bi-person"></i>
+                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+                    <div class="validation-error">Please enter a valid username</div>
+                </div>
+    
+                <div class="form-group">
+                    <i class="bi bi-lock"></i>
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <div class="validation-error">Password is required</div>
+                </div>
+    
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">
+                            Remember me
+                        </label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+    
+                <button type="submit" class="btn btn-login">
+                    Sign In
+                </button>
+            </form>
+    
+            <div class="alternative-login">
+                <p>Or continue with</p>
+                <div class="social-buttons">
+                    <button class="btn-social">
+                        <i class="bi bi-google"></i>
+                    </button>
+                    <button class="btn-social">
+                        <i class="bi bi-microsoft"></i>
+                    </button>
+                    <button class="btn-social">
+                        <i class="bi bi-facebook"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+
+
+
+
+
+

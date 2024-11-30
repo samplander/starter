@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Responsive Sidebar Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --sidebar-collapsed-width: 64px;
+            --transition-speed: 0.3s;
+            --primary-bg: #1a1d3a;
+            --secondary-bg: #242850;
+            --hover-bg: #2f345e;
+            --active-bg: #3F51B5;
+            --text-primary: #ffffff;
+            --text-secondary: #a4a6b3;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: var(--primary-bg);
+            transition: all var(--transition-speed) ease;
+            z-index: 1000;
+            overflow-x: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar.collapsed {
+            width: var(--sidebar-collapsed-width);
+        }
+
+        .sidebar-header {
+            padding: 1.25rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-toggle {
+            color: var(--text-primary);
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform var(--transition-speed);
+        }
+
+        .menu-toggle:hover {
+            color: var(--text-secondary);
+        }
+
+        .nav-item {
+            position: relative;
+            width: 100%;
+            margin: 4px 0;
+        }
+
+        .nav-link {
+            padding: 0.875rem 1.25rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            border-radius: 8px;
+            margin: 0 0.5rem;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background-color: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            background-color: var(--active-bg);
+            color: var(--text-primary);
+        }
+
+        .nav-link i:first-child {
+            width: 1.5rem;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+            text-align: center;
+        }
+
+        .nav-link .link-text {
+            transition: opacity var(--transition-speed);
+            white-space: nowrap;
+        }
+
+        .collapsed .link-text {
+            display: none;
+        }
+
+        .collapsed .toggle-icon {
+            display: none;
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-speed) ease;
+            background-color: var(--secondary-bg);
+            margin: 0 0.5rem;
+            border-radius: 8px;
+            opacity: 0;
+        }
+
+        .submenu.expanded {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .submenu .nav-link {
+            padding-left: 3.5rem;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .toggle-icon {
+            margin-left: auto;
+            transition: transform var(--transition-speed);
+            font-size: 0.875rem;
+            opacity: 0.75;
+        }
+
+        .nav-link.expanded .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            transition: margin-left var(--transition-speed) ease;
+        }
+
+        .main-content.expanded {
+            margin-left: var(--sidebar-collapsed-width);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: var(--sidebar-width) !important;
+            }
+
+            .sidebar.mobile-visible {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <span class="link-text">Dashboard</span>
+            <button class="menu-toggle">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column mt-2">
+            <li class="nav-item">
+                <a class="nav-link" data-menu-id="dashboard">
+                    <i class="bi bi-house-door"></i>
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-has-submenu="true" data-menu-id="users">
+                    <i class="bi bi-people"></i>
+                    <span class="link-text">Users</span>
+                    <i class="bi bi-chevron-down toggle-icon"></i>
+                </a>
+                <div class="submenu" data-parent="users">
+                    <a class="nav-link" data-menu-id="user-list">
+                        <span class="link-text">User List</span>
+                    </a>
+                    <a class="nav-link" data-menu-id="add-user">
+                        <span class="link-text">Add User</span>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-has-submenu="true" data-menu-id="analytics">
+                    <i class="bi bi-graph-up"></i>
+                    <span class="link-text">Analytics</span>
+                    <i class="bi bi-chevron-down toggle-icon"></i>
+                </a>
+                <div class="submenu" data-parent="analytics">
+                    <a class="nav-link" data-menu-id="reports">
+                        <span class="link-text">Reports</span>
+                    </a>
+                    <a class="nav-link" data-menu-id="statistics">
+                        <span class="link-text">Statistics</span>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-has-submenu="true" data-menu-id="settings">
+                    <i class="bi bi-gear"></i>
+                    <span class="link-text">Settings</span>
+                    <i class="bi bi-chevron-down toggle-icon"></i>
+                </a>
+                <div class="submenu" data-parent="settings">
+                    <a class="nav-link" data-menu-id="general">
+                        <span class="link-text">General</span>
+                    </a>
+                    <a class="nav-link" data-menu-id="security">
+                        <span class="link-text">Security</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <h1>Main Content</h1>
+        <p>This is your main content area. The sidebar will overlay this content on mobile devices.</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // State management
+            let menuState = {
+                activeMenu: null,
+                expandedMenus: new Set(),
+                sidebarCollapsed: false
+            };
+
+            // Toggle sidebar
+            function toggleSidebar(collapse) {
+                const willCollapse = collapse !== undefined ? collapse : !sidebar.classList.contains('collapsed');
+                
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle('mobile-visible');
+                } else {
+                    sidebar.classList.toggle('collapsed', willCollapse);
+                    mainContent.classList.toggle('expanded', willCollapse);
+                    menuState.sidebarCollapsed = willCollapse;
+                }
+            }
+
+            menuToggle.addEventListener('click', () => toggleSidebar());
+
+            // Handle menu clicks and state
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const menuId = this.dataset.menuId;
+                    
+                    // If sidebar is collapsed and this is a click on a menu item
+                    if (menuState.sidebarCollapsed && !this.classList.contains('active')) {
+                        toggleSidebar(false);
+                    }
+
+                    if (this.dataset.hasSubmenu) {
+                        // Toggle submenu state
+                        const wasExpanded = this.classList.contains('expanded');
+                        this.classList.toggle('expanded');
+                        
+                        const submenu = this.nextElementSibling;
+                        submenu.classList.toggle('expanded');
+
+                        if (wasExpanded) {
+                            menuState.expandedMenus.delete(menuId);
+                        } else {
+                            menuState.expandedMenus.add(menuId);
+                        }
+                    } else {
+                        // Handle active state for regular menu items
+                        navLinks.forEach(l => {
+                            if (!l.dataset.hasSubmenu) {
+                                l.classList.remove('active');
+                            }
+                        });
+                        this.classList.add('active');
+                        menuState.activeMenu = menuId;
+                    }
+                });
+            });
+
+            // Restore menu state after sidebar toggle
+            function restoreMenuState() {
+                // Restore expanded menus
+                menuState.expandedMenus.forEach(menuId => {
+                    const link = document.querySelector(`[data-menu-id="${menuId}"]`);
+                    const submenu = link?.nextElementSibling;
+                    if (link && submenu) {
+                        link.classList.add('expanded');
+                        submenu.classList.add('expanded');
+                    }
+                });
+
+                // Restore active menu
+                if (menuState.activeMenu) {
+                    const activeLink = document.querySelector(`[data-menu-id="${menuState.activeMenu}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            }
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('collapsed');
+                    mainContent.classList.remove('expanded');
+                    menuState.sidebarCollapsed = false;
+                }
+                restoreMenuState();
+            });
+
+            // Initialize first menu item as active
+            const firstMenuItem = document.querySelector('.nav-link[data-menu-id="dashboard"]');
+            if (firstMenuItem) {
+                firstMenuItem.classList.add('active');
+                menuState.activeMenu = 'dashboard';
+            }
+        });
+    </script>
+</body>
+</html>

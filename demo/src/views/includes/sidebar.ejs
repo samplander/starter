@@ -1,0 +1,61 @@
+<nav class="sidebar">
+        <div class="sidebar-header">
+            <span class="link-text">Dashboard</span>
+            <button class="menu-toggle">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column mt-2">
+            <li class="nav-item">
+                <a class="nav-link" data-menu-id="dashboard">
+                    <i class="bi bi-house-door"></i>
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-has-submenu="true" data-menu-id="users">
+                    <i class="bi bi-people"></i>
+                    <span class="link-text">Users</span>
+                    <i class="bi bi-chevron-down toggle-icon"></i>
+                </a>
+                <div class="submenu" data-parent="users">
+                    <a class="nav-link" data-menu-id="user-list">
+                        <span class="link-text">User List</span>
+                    </a>
+                    <a class="nav-link" data-menu-id="add-user">
+                        <span class="link-text">Add User</span>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-has-submenu="true" data-menu-id="analytics">
+                    <i class="bi bi-graph-up"></i>
+                    <span class="link-text">Analytics</span>
+                    <i class="bi bi-chevron-down toggle-icon"></i>
+                </a>
+                <div class="submenu" data-parent="analytics">
+                    <a class="nav-link" data-menu-id="reports">
+                        <span class="link-text">Reports</span>
+                    </a>
+                    <a class="nav-link" data-menu-id="statistics">
+                        <span class="link-text">Statistics</span>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-has-submenu="true" data-menu-id="settings">
+                    <i class="bi bi-gear"></i>
+                    <span class="link-text">Settings</span>
+                    <i class="bi bi-chevron-down toggle-icon"></i>
+                </a>
+                <div class="submenu" data-parent="settings">
+                    <a class="nav-link" data-menu-id="general">
+                        <span class="link-text">General</span>
+                    </a>
+                    <a class="nav-link" data-menu-id="security">
+                        <span class="link-text">Security</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+</nav>

@@ -1,0 +1,307 @@
+/* ==========================================================================
+   forms.css - Styles for form elements, layouts, and interactions
+   ========================================================================== */
+
+/* Form Container and Sections
+   ========================================================================== */
+   .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.form-section-title {
+    font-size: 1.1rem;
+    color: var(--primary-bg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.form-section-title i {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+}
+
+/* Form Layout
+   ========================================================================== */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.col-12 { grid-column: span 12; }
+.col-6 { grid-column: span 6; }
+.col-4 { grid-column: span 4; }
+.col-3 { grid-column: span 3; }
+
+/* Form Groups
+   ========================================================================== */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--primary-bg);
+}
+
+.form-label.required::after {
+    content: "*";
+    color: var(--error-color);
+    margin-left: var(--spacing-xs);
+}
+
+.form-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-xs);
+}
+
+/* Input Fields
+   ========================================================================== */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.625rem var(--spacing-md);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--primary-bg);
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+}
+
+.form-control:focus {
+    border-color: var(--active-bg);
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
+    outline: none;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: var(--page-bg);
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Select Dropdowns
+   ========================================================================== */
+.form-select {
+    width: 100%;
+    padding: 0.625rem var(--spacing-md);
+    padding-right: 2.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--primary-bg);
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    appearance: none;
+    transition: all var(--transition-normal);
+}
+
+.form-select:focus {
+    border-color: var(--active-bg);
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
+    outline: none;
+}
+
+/* Checkboxes and Radio Buttons
+   ========================================================================== */
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 1.8rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-check-input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: -1.8rem;
+    margin-top: 0.2rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.form-check-input[type="radio"] {
+    border-radius: 50%;
+}
+
+.form-check-input:checked {
+    background-color: var(--active-bg);
+    border-color: var(--active-bg);
+}
+
+.form-check-label {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Switch Toggle
+   ========================================================================== */
+.form-switch {
+    padding-left: 2.5rem;
+}
+
+.form-switch .form-check-input {
+    width: 2rem;
+    height: 1.1rem;
+    margin-left: -2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='rgba(255,255,255,1)'/%3E%3C/svg%3E");
+    background-position: left center;
+    border-radius: 2rem;
+    transition: background-position .15s ease-in-out;
+}
+
+.form-switch .form-check-input:checked {
+    background-position: right center;
+}
+
+/* Range Slider
+   ========================================================================== */
+.form-range {
+    width: 100%;
+    height: 1.5rem;
+    padding: 0;
+    background: transparent;
+    appearance: none;
+}
+
+.form-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    background: var(--active-bg);
+    border: 0;
+    border-radius: 50%;
+    transition: background-color .15s ease-in-out;
+    cursor: pointer;
+}
+
+.form-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5rem;
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+}
+
+/* Validation States
+   ========================================================================== */
+.is-invalid {
+    border-color: var(--error-color) !important;
+}
+
+.is-valid {
+    border-color: var(--success-color) !important;
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--error-color);
+}
+
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.valid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--success-color);
+}
+
+.is-valid ~ .valid-feedback {
+    display: block;
+}
+
+/* Form Actions
+   ========================================================================== */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Fieldset and Legend
+   ========================================================================== */
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+legend {
+    font-weight: 500;
+    padding: 0 var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .col-6,
+    .col-4,
+    .col-3 {
+        grid-column: span 6;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .col-6,
+    .col-4,
+    .col-3 {
+        grid-column: span 1;
+    }
+}

@@ -1,0 +1,65 @@
+<div class="page-container">
+    <div class="content-container">
+        <div class="table-controls">
+            <button class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i>
+                <span>Add New</span>
+            </button>
+            <div class="search-container">
+                <i class="bi bi-search"></i>
+                <input type="text" class="search-input" placeholder="Search...">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="form-check-input" id="selectAll">
+                            </div>
+                        </th>
+                        <th class="sortable" data-sort="id">ID</th>
+                        <th class="sortable" data-sort="name">Name</th>
+                        <th class="sortable" data-sort="email">Email</th>
+                        <th class="sortable" data-sort="role">Role</th>
+                        <th class="sortable" data-sort="status">Status</th>
+                        <th class="sortable" data-sort="lastLogin">Last Login</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <span class="page-info">Showing <span id="startRecord">1</span> to <span id="endRecord">10</span> of <span id="totalRecords">0</span> entries</span>
+            <div class="page-buttons">
+                <button class="page-btn" id="prevPage" disabled>Previous</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn" id="nextPage">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Context Menu -->
+<div class="context-menu">
+    <div class="context-menu-item">
+        <i class="bi bi-eye"></i>
+        <span>View Details</span>
+    </div>
+    <div class="context-menu-item">
+        <i class="bi bi-pencil"></i>
+        <span>Edit</span>
+    </div>
+    <div class="context-menu-item">
+        <i class="bi bi-person-fill-lock"></i>
+        <span>Change Status</span>
+    </div>
+    <div class="context-menu-item">
+        <i class="bi bi-trash"></i>
+        <span>Delete</span>
+    </div>
+</div>
